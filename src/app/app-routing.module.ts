@@ -24,7 +24,7 @@ const routes: Routes = [
       {
         path: 'contact',
         component: ContactComponent,
-        canActivate: [AuthGuard]
+        // canActivate: [AuthGuard]
       },
       {
         path: 'landingpage',

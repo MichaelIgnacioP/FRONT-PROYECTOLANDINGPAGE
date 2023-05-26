@@ -22,22 +22,43 @@ export class ContactComponent {
     private router: Router
   ) { }
 
+  // sendMess() {
+  //   this.apiService.sendMess(this.contact).subscribe(
+  //     res => {
+  //       if (res.message === 'Notificación de contacto almacenado exitosamente') {
+  //         this.tostrSvc.success(`Haz enviado el mensaje con éxito`, 'Éxito!.');
+  //         this.router.navigate(['/landingpage']);
+  //       } else if (res.message === 'Campos mal ingresados') {
+  //         console.log('Otro estado de respuesta:', res.status);
+  //         this.tostrSvc.error('Error!', 'Por favor vuelve a intentar.');
+  //       }
+  //     },
+  //     error => {
+  //       console.log('Error en la solicitud:', error);
+  //       this.tostrSvc.error('Error!', 'Por favor vuelve a intentar.');
+  //     }
+  //   );
+  // }
+
+  validateForm(): boolean {
+    if (
+      this.contact.fullname &&
+      this.contact.email &&
+      this.contact.description
+    ) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
   sendMess() {
-    this.apiService.sendMess(this.contact).subscribe(
-      res => {
-        if (res.message === 'Notificación de contacto almacenada exitosamente') {
-          this.tostrSvc.success(`Haz enviado el mensaje con éxito`, 'Éxito!.');
-          this.router.navigate(['/landingpage']);
-        } else if (res.message === 'Campos mal ingresados') {
-          console.log('Otro estado de respuesta:', res.status);
-          this.tostrSvc.error('Error!', 'Por favor vuelve a intentar.');
-        }
-      },
-      error => {
-        console.log('Error en la solicitud:', error);
-        this.tostrSvc.error('Error!', 'Por favor vuelve a intentar.');
-      }
-    );
+    if (this.validateForm()) {
+      this.tostrSvc.success('Haz enviado el mensaje con éxito', 'Éxito!');
+      this.router.navigate(['/landingpage']);
+    } else {
+      this.tostrSvc.error('Error!', 'Por favor vuelve a intentar.');
+    }
   }
 
 
