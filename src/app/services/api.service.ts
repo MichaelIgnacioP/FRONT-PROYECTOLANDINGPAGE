@@ -44,7 +44,6 @@ export class ApiService {
     let errorMessage = 'Error en la solicitud';
 
     if (error.error instanceof ErrorEvent) {
-      // Error del cliente
       errorMessage = `Error: ${error.error.message}`;
     } else {
       // Error del servidor
