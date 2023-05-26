@@ -4,7 +4,7 @@
 
 export const environment = {
     production: false,
-    apiURL: 'api-proyectobsale-4zumgbsrk-michaelignaciop.vercel.app'
+    apiURL: 'https://api-proyectobsale.vercel.app'
   };
   
   /*
