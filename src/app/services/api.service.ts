@@ -66,15 +66,15 @@ export class ApiService {
   //////////////////////////////////////////////////////////////
 
   signUp(user: any) {
-    return this.http.post<any>(this.api_url + '/register', user);
+    return this.http.post<any>(`${this.api_url}/register`, user);
   }
 
   signIn(user: any) {
-    return this.http.post<any>(this.api_url + '/login', user);
+    return this.http.post<any>(`${this.api_url}/login`, user);
   }
 
   sendMess(contact: any) {
-    return this.http.post<any>(this.api_url + '/contact', contact);
+    return this.http.post<any>(`${this.api_url}/contact`, contact);
   }
 
   //////////////////////////////////////////////////////////////
