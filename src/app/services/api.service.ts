@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { Router } from '@angular/router';
-import { HttpClient, HttpRequest, HttpHandler } from '@angular/common/http';
+import { HttpClient, HttpRequest, HttpHandler, HttpErrorResponse  } from '@angular/common/http';
+import { Observable, throwError } from 'rxjs';
+import { catchError } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -38,6 +40,21 @@ export class ApiService {
     return next.handle(tokenReq);
   }
 
+  private handleError(error: HttpErrorResponse) {
+    let errorMessage = 'Error en la solicitud';
+
+    if (error.error instanceof ErrorEvent) {
+      // Error del cliente
+      errorMessage = `Error: ${error.error.message}`;
+    } else {
+      // Error del servidor
+      errorMessage = `Error: ${error.status}: ${error.error.message}`;
+    }
+
+    console.error(errorMessage);
+    return throwError(errorMessage);
+  }
+
   //////////////////////////////////////////////////////////////
   //////////////////////////// GET /////////////////////////////
   //////////////////////////////////////////////////////////////
@@ -54,6 +71,10 @@ export class ApiService {
 
   signIn(user: any) {
     return this.http.post<any>(this.api_url + '/login', user);
+  }
+
+  sendMess(contact: any) {
+    return this.http.post<any>(this.api_url + '/contact', contact);
   }
 
   //////////////////////////////////////////////////////////////

@@ -6,29 +6,35 @@
             <div class="col-md-12">
                 <div class="section-header text-center pb-5">
                     <h2>Contactanos</h2>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. <br>  ea sit eaque, laudantium veritatis earum.</p>
+                    <p>Conéctate con nosotros para desatar el potencial de tus ideas. <br> Juntos, construyamos un futuro extraordinario.</p>
                 </div>
             </div>
         </div>
         <div class="row m-0">
             <div class="cold-md-12 p-0 pt-4 p-4 m-auto">
                 <div class="row">
-                    <div class="col-md-12">
-                        <div class="mb-3">
-                            <input type="text" class="form-control" required placeholder="Tu nombre completo">
+                    <form (submit)="sendMess()">
+                        <div class="col-md-12">
+                            <div class="mb-3">
+                                <input type="text" [(ngModel)]="contact.fullname" name="fullname" class="form-control"
+                                    required placeholder="Tu nombre completo">
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-md-12">
-                        <div class="mb-3">
-                            <input type="email" class="form-control" required placeholder="Tu email aquí">
+                        <div class="col-md-12">
+                            <div class="mb-3">
+                                <input type="email" [(ngModel)]="contact.email" name="email" class="form-control"
+                                    required placeholder="Tu email aquí">
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-md-12">
-                        <div class="mb-3">
-                            <textarea name="" rows="3" required class="form-control" placeholder="Tu asunto aquí"></textarea>
+                        <div class="col-md-12">
+                            <div class="mb-3">
+                                <textarea name="description" [(ngModel)]="contact.description" rows="3" required
+                                    class="form-control" placeholder="Tu asunto aquí"></textarea>
+                            </div>
                         </div>
-                    </div>
-                    <button class="btn btn-warning btn-lg btn-block mt-3">Enviar</button>
+                        <button class="btn btn-warning btn-lg btn-block mt-3">Enviar</button>
+                    </form>
+
                 </div>
             </div>
         </div>
