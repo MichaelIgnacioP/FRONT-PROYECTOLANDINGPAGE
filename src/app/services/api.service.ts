@@ -10,7 +10,7 @@ import { catchError } from 'rxjs/operators';
 })
 export class ApiService {
 
-  api_url: string = environment.apiURL;
+  api_url: string = 'https://' + environment.apiURL;
   api: any;
 
   constructor( 
