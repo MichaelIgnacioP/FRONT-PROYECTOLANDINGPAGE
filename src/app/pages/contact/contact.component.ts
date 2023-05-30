@@ -41,14 +41,17 @@ export class ContactComponent {
   // }
 
   validateForm(): boolean {
-    if (
-      this.contact.fullname &&
-      this.contact.email &&
-      this.contact.description
-    ) {
-      return true;
-    } else {
+    if (!this.contact.fullname) {
+      this.tostrSvc.error('Error!', 'Debes completar tu nombre');
       return false;
+    } else if (!this.contact.email) {
+      this.tostrSvc.error('Error!', 'Debes completar tu correo electrónico');
+      return false;
+    } else if (!this.contact.description) {
+      this.tostrSvc.error('Error!', 'Debes completar la descripción');
+      return false;
+    } else {
+      return true;
     }
   }
 
@@ -57,9 +60,10 @@ export class ContactComponent {
       this.tostrSvc.success('Haz enviado el mensaje con éxito', 'Éxito!');
       this.router.navigate(['/landingpage']);
     } else {
-      this.tostrSvc.error('Error!', 'Por favor vuelve a intentar.');
+      this.tostrSvc.error('Error!', 'Debes completar el formulario');
     }
   }
+
 
 
 }
